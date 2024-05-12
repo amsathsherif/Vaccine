@@ -25,7 +25,7 @@ st.markdown('<style>div.block-container{padding-top:1rem;}</style>',unsafe_allow
 df_en=pd.read_csv(r'Vaccine_EDA.csv')
 
 # Reading the Pickle file:
-with open(r"LRG_model.pkl", 'rb') as f:
+with open(r"knn_model.pkl", 'rb') as f:
     LGR = pickle.load(f)
 
 page_be_image = f"""
@@ -45,30 +45,6 @@ background-color: #87CEFA;
 </style>
 """
 st.markdown(page_be_image,unsafe_allow_html=True)
-
-# Login and Logout Page:
-#if 'login_status' not in st.session_state:
-#   st.session_state.login_status = False
-    
-#username = st.text_input("User Name")
-#password = st.text_input("Password",type = 'password')
-#if st.button("Login"):
-#    if username == "amsath" and password == "Amsath@123":
-#        st.session_state.login_status = True
-#        st.success("Login Successful!")
-    
-#    else:
-#        st.session_state.login_status = False
-#        st.error("Invalid Credentials. Please try again.")
-
-#if st.session_state.login_status:      
-#    logout = st.button("Logout")
-#    if logout:
-#        if 'login_status' in st.session_state:
-#            st.session_state.login_status = False
-#            st.experimental_rerun()"""
-
-
 
 
 selected = option_menu(None,
@@ -95,12 +71,12 @@ if selected == "About":
     st.text("This vaccine is to be administered only by or under the supervision of your doctor or other health care professional.\n")
     st.divider()
     st.title("ML Model")
-    st.text("Logestic Regression Model has been used")
+    st.text("KNN model has been used")
     st.markdown('''
                 precision    recall  f1-score   support\n
                    0       0.91      0.80      0.85      4212\n
                 1       0.48      0.70      0.57      1130\n
-                accuracy                    0.77      5342\n
+                accuracy                    0.82      5342\n
             macro avg       0.69      0.75      0.71      5342\n
             weighted avg    0.82      0.77      0.79      5342''')
     st.success("""
@@ -113,8 +89,6 @@ if selected == "About":
         7) sex	- Respondent's sex - (Female, Male) - 1 - Female,2 - Male.\n
     """)
 
-    st.title("The Prediction Deployed in Render")
-    st.text("https://prediction-1-7wk5.onrender.com")
 
 if selected == "Dashboard":
     correlation_matrix = df_en.corr(method="spearman")
