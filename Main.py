@@ -53,7 +53,7 @@ st.markdown(page_be_image,unsafe_allow_html=True)
 #username = st.text_input("User Name")
 #password = st.text_input("Password",type = 'password')
 #if st.button("Login"):
-#    if username == "Subash" and password == "Subash@123":
+#    if username == "amsath" and password == "Amsath@123":
 #        st.session_state.login_status = True
 #        st.success("Login Successful!")
     
